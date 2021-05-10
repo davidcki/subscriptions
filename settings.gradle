@@ -1,0 +1,4 @@
+rootProject.name = 'subscriptions-system'
+include 'subscriptions'
+include 'public-api'
+include 'email'

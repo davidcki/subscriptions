@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  public-api:
+    build:
+      context: ./public-api
+      dockerfile: Dockerfile
+    ports:
+      - 10010:10010
+  subscriptions:
+    build:
+      context: ./subscriptions
+      dockerfile: Dockerfile
+    ports:
+      - 10011:10011
+  email:
+    build:
+      context: ./email
+      dockerfile: Dockerfile
+    ports:
+      - 10012:10012
