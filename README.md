@@ -25,7 +25,11 @@ It contains three main parts:
 
 While in the project's root folder:
 
+`./gradlew build` will create the application binaries required in the containers.
+
 `docker-compose up -d` will start the five containers that compose this application.
+
+Additional commands:
 
 `docker-compose down` will stop and delete the containers created by the command above.
 
