@@ -1,20 +1,42 @@
 version: '3.8'
 services:
   public-api:
+    container_name: subscriptions-public-api-svc
     build:
       context: ./public-api
       dockerfile: Dockerfile
+    image: davidcki/subscriptions-public-api
     ports:
       - 10010:10010
   subscriptions:
+    container_name: subscriptions-svc
     build:
       context: ./subscriptions
       dockerfile: Dockerfile
+    image: davidcki/subscriptions
     ports:
       - 10011:10011
+    links:
+      - mongo
   email:
+    container_name: subscriptions-email-svc
     build:
       context: ./email
       dockerfile: Dockerfile
+    image: davidcki/subscriptions-email
     ports:
       - 10012:10012
+  mongo:
+    container_name: subscriptions-mongo
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=subscriptions
+      - MONGO_INITDB_ROOT_PASSWORD=subspassword
+    volumes:
+      - ./mongo-volume:/data/db
+
+volumes:
+  mongo-volume:
