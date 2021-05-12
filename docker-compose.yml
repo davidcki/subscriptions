@@ -8,14 +8,16 @@ services:
     image: davidcki/subscriptions-public-api
     ports:
       - 10010:10010
+    links:
+      - subscriptions
+    environment:
+      - subscriptions.service.url=http://subscriptions:10011
   subscriptions:
     container_name: subscriptions-svc
     build:
       context: ./subscriptions
       dockerfile: Dockerfile
     image: davidcki/subscriptions
-    ports:
-      - 10011:10011
     links:
       - mongo
   email:

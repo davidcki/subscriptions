@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 class SubscriptionControllerTest {
 
+  private static final String SUBSCRIPTION_PATH = "/subscription";
   private static final String SUBSCRIPTION_ID = "609bc7d1418d3753487b623f";
   private static final String EMAIL = "email";
   private static final String DATE_OF_BIRTH = "date_of_birth";
@@ -67,7 +68,7 @@ class SubscriptionControllerTest {
 
     mockMvc
         .perform(
-            post("/subscription").contentType(MediaType.APPLICATION_JSON).content(requestAsJson))
+            post(SUBSCRIPTION_PATH).contentType(MediaType.APPLICATION_JSON).content(requestAsJson))
         .andExpect(status().isCreated())
         .andExpect(header().string("Location", String.format("subscription/%s", SUBSCRIPTION_ID)));
   }
@@ -79,10 +80,10 @@ class SubscriptionControllerTest {
     String requestAsJson = mapper.writeValueAsString(request);
 
     mockMvc
-      .perform(
-        post("/subscription").contentType(MediaType.APPLICATION_JSON).content(requestAsJson))
-      .andExpect(status().isBadRequest())
-      .andExpect(content().string("'Masculine' is not a valid gender."));
+        .perform(
+            post(SUBSCRIPTION_PATH).contentType(MediaType.APPLICATION_JSON).content(requestAsJson))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().string("'Masculine' is not a valid gender."));
   }
 
   @Test
@@ -92,10 +93,10 @@ class SubscriptionControllerTest {
     String requestAsJson = mapper.writeValueAsString(request);
 
     mockMvc
-      .perform(
-        post("/subscription").contentType(MediaType.APPLICATION_JSON).content(requestAsJson))
-      .andExpect(status().isBadRequest())
-      .andExpect(content().string("'10-20-2000' is not a valid date of birth."));
+        .perform(
+            post(SUBSCRIPTION_PATH).contentType(MediaType.APPLICATION_JSON).content(requestAsJson))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().string("'10-20-2000' is not a valid date of birth."));
   }
 
   @Test
@@ -105,7 +106,7 @@ class SubscriptionControllerTest {
     String responseContent =
         mockMvc
             .perform(
-                post("/subscription")
+                post(SUBSCRIPTION_PATH)
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(requestAsJson))
             .andExpect(status().isBadRequest())

@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Mongo's Docker volume
+mongo-volume/
