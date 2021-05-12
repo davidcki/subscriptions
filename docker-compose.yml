@@ -27,14 +27,12 @@ services:
       context: ./email
       dockerfile: Dockerfile
     image: davidcki/subscriptions-email
-    ports:
-      - 10012:10012
+    links:
+      - rabbitmq
   mongo:
     container_name: subscriptions-mongo
     image: mongo
     restart: always
-    ports:
-      - 27017:27017
     environment:
       - MONGO_INITDB_ROOT_USERNAME=subscriptions
       - MONGO_INITDB_ROOT_PASSWORD=subspassword
@@ -44,9 +42,6 @@ services:
     container_name: subscriptions-rabbitmq
     image: rabbitmq:3-management
     restart: always
-    ports:
-      - 5672:5672
-      - 15672:15672
 
 volumes:
   mongo-volume:
