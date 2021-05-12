@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 class SubscriptionsServiceOperationControllerTest {
 
-  private static final String SUBSCRIPTION_PATH = "/subscription";
+  private static final String SUBSCRIPTION_PATH = "/api/subscription";
   private static final String SUBSCRIPTION_ID = "609c230dcb29fb7679110233";
   private static final String EMAIL = "email";
   private static final String DATE_OF_BIRTH = "date_of_birth";

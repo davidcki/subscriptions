@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 /** A web controller to invoke endpoints on the Subscriptions service */
 @RestController
+@RequestMapping("/api")
 public class SubscriptionsServiceOperationController {
 
   private final RestTemplate restTemplate;
