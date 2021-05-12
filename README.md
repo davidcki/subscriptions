@@ -37,7 +37,7 @@ Additional commands:
 
 ### Testing the application
 
-Using CURL to invoke the endpoints (currently only new subscription) in the public service.
+Using CURL to invoke the endpoints (**currently only new subscription**) in the public service.
 
 ```
 curl -X POST                                            \
